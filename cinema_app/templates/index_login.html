@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+ 	<title>KINO-BOT</title>
+ <meta charset="utf-8">
+ <link rel="stylesheet" href="{% static "cinema_app/css/site_login.css" %}">
+ <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet">
+ </head>
+ <body>
+
+	 <div style="display:none;" class="unlogin">
+		 <div class="inlogo">
+			 <img src="{% static "cinema_app/img/main_logo.png" %}"></img>
+			 <div class="title">KINO-BOT</div>
+		 </div>
+		 <div class="name_input">
+			 <input class="input_style" placeholder="INSERT YOUR NAME"></input>
+			 <hr noshade style="border: none; height: 48px; width: 2px; background: #4a4d53;">
+			 <div class="input_style_img">
+			 	<img width="38px" height="36px" src="{% static "cinema_app/img/icons8-enter-mac-key-50.png" %}"></img>
+			 </div>
+		 </div>
+	 </div>
+	 <div class="content">
+		<div class="top">
+			<div class="top_left_side">
+				<img class="top_img" width="60px" height="60px" src="{% static "cinema_app/img/main_logo.png" %}"></img>
+				<span>KINO-BOT</span>
+			</div>
+		<div class="top_right_side">
+				<span class="room_name"></span>
+			</div>
+		</div>
+		<div class="main">
+<!-- 				<div style="width: 956px;height: 494px;" class="kino-player">
+					<div id="yohoho" data-kinopoisk="930000"></div> 
+					<script src="https://yohoho.cc/yo.js"></script>
+			</div> -->
+ 			<!-- <div class="table_top">
+				<span>Name</span>
+ 				<span>MEMBERS</span>
+				<span>STATUS</span>
+			</div>
+			<hr noshade  style="margin: 0; background: #4a4d53;"></hr> -->
+<!-- 			<div class="create_room">
+				<div class="create_room_item">
+					<div class="room_name">Имя</div>
+					<input></input>
+				</div>
+				<div class="create_room_item">
+					<div class="room_id">ID</div>
+					<input></input>
+				</div>
+				<div class="create_room_item">
+					<div class="room_max_members">Макс.участников</div>
+					<input></input>
+				</div>
+			</div>
+			<hr noshade style="max-width: 595px;margin: 0; margin-top: 30px; background: #4a4d53;"></hr>
+			<div class="create_room">
+					<div class="create_buttons">
+						<div class="cancel">Отмена</div>
+						<div class="save green button">Принять</div>
+					</div>
+			</div> -->
+			
+		</div>
+		<div class="bottom">
+			<div class="left_side">
+				<div class="user_info">
+					<div id="me" class="user_icon"></div>
+					<div class="user_nickname"></div>
+				</div>
+				<div style="display:none;" class="user_status">
+					<span>Готовы:</span>
+					<span class="ready"></span>/<span class="count"></span>
+				</div>
+				<div style="display: none;" class="users"></div>
+<!-- 				<span>Готовы:</span>
+					<span class="ready">3</span>/<span class="count">5</span>
+				</div>
+				<div class="users">
+					<div id="0" class="user_icon">M</div>
+					<div class="user_icon user_ready">Q</div>
+					<div class="user_icon">E</div>
+					<div class="user_icon">B</div>
+					<div class="user_icon">W</div>
+				</div> -->
+				<!-- ready -->
+				<!-- members -->
+			</div>
+			<div class="right_side">
+				<div class="bottom_button green button">Create room<!-- READY --></div>
+				<img width="40px" height="40px" src="{% static "cinema_app/img/cogwheel.png" %}"></img>
+			</div>
+		</div>
+	 </div>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	 <script src="{% static "cinema_app/js/jquery.cookie.js" %}"></script>
+	 <script src="{% static "cinema_app/js/yo.js" %}"></script>
+	 <script src="{% static "cinema_app/js/index_js.js" %}"></script>
+	 <script type="text/javascript">
+    var csrf_token = '{{ csrf_token }}';
+  </script>
+ </body>

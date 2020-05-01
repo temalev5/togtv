@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+ 	<title>Совместный просмотр</title>
+ <meta charset="utf-8">
+
+ <link rel="stylesheet" href="{% static "cinema_app/css/site.css" %}">
+ <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet">
+ </head>
+ <body>
+   <div class="input_name">
+      {% if user_name %}
+     <div class="name" style="text-align: center">{{ user_name }}</div>
+     {% else %}
+     <input class="name" placeholder="ENTER YOR NAME" type="text" tabindex="1">
+     {% endif %}
+    </div>
+  </div>
+  <div class="content">
+
+    {% for movie_room in movie_rooms %} 
+    <div class="movie_rom">
+      <div class="movie_info">
+        {{ movie_room.MovieRoom_Name }}
+      </div>
+      <div class="button">
+        <a href="/room?id={{ movie_room.id }}">+JOIN</a>
+      </div>
+    </div>
+    {% endfor %}
+    
+    
+  </div> <!-- CONTENT -->
+  <form class="create_room" method="POST"> {% csrf_token %}
+    <input type="submit" class="button create_rom" value="CREATE ROOM">
+    <div class="input_kinopoisk_id">
+        <input name="kino_ID" class="KINO_ID" placeholder="MOVIE ID" type="text" tabindex="1">
+    </div>
+  </form>
+  <!-- <img src="chek_one.png">
+  <style>
+  body{
+	overflow: hidden;
+	padding:0;
+	margin:0;	 
+  }
+  </style> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="{% static "cinema_app/js/jquery.cookie.js" %}"></script>  <script type="text/javascript">z
+    var csrf_token = '{{ csrf_token }}';
+  </script>
+ </body>

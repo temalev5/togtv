@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+ 	<title>Совместный просмотр</title>
+ <meta charset="utf-8">
+ <link rel="stylesheet" href="{% static "cinema_app/css/site.css" %}">
+ <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet">
+ </head>
+ <body>
+  <div class="cinema"> {% csrf_token %}
+    <div class="movie">
+        <div id="yohoho" data-kinopoisk="{{ movie.Movie_ID }}"></div>
+      <script tabindex="1" src="//yohoho.cc/yo.js"></script>
+    </div>
+    <div class="room_settings">
+        <div class="title_of_settings" >Server settings:</div>
+        <hr class="title_of_settings hr">
+      <div contenteditable class="rom_title settings">{{ movie.MovieRoom_Name }}</div>
+      <div class="title_of_settings">User settings:</div>
+      <hr class="title_of_settings hr">
+      <div contenteditable class="rom_title settings">{{ user.user_name }}</div>
+      <div class="settings_submit">SAVE
+        <!-- <div class="circle"></div>
+        <div class="circle fill"></div>
+        <div class="circle"></div> -->
+      </div>
+      <img src="{% static "cinema_app/img/icons8-sort-left-96.png" %}" class="button_settings_back">
+    </div>
+    <div class="room_info">
+        <a class="arrow-icon">
+            <span class="left-bar"></span>
+            <span class="right-bar"></span>
+          </a>
+        <img src="{% static "cinema_app/img/cogwheel.svg" %}" class="button_settings">
+      <div id="title" class="rom_title">{{ movie.MovieRoom_Name }}</div>
+      <div class="room_users">
+        {% for user in room_users %}
+        <div class="room_user">
+          {{user.user_name}}
+          <div class="preparedness {% if user.user_status %} ready {% endif %}"></div>
+        </div>
+        {% endfor %}
+        <!-- <div class="room_user">
+          gomlx
+          <div class="preparedness"></div>
+        </div> -->
+        <!--<div class="room_user">
+          Mr.Fresh
+          <div class="preparedness"></div>
+        </div>
+        <div class="room_user">
+          britvajr
+          <div class="preparedness"></div>
+        </div>
+        <div class="room_user">
+          kostyajor
+          <div class="preparedness"></div>
+        </div> -->
+      </div> <!-- ROOM USERS -->
+      <div class="readybutton{% if user.user_status %} ready {% endif %}">{% if user.user_status %}PREPARE{% else %}READY{% endif %}</div>
+    </div> <!-- ROOM INFO -->
+  </div> <!-- CINEMA -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="{% static "cinema_app/js/jquery.cookie.js" %}"></script>
+  <script src="{% static "cinema_app/js/room.js" %}"></script>
+  <script type="text/javascript">
+    var csrf_token = '{{ csrf_token }}';
+  </script>
+ </body>

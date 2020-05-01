@@ -1,0 +1,1 @@
+web: gunicorn sinema.wsgi --log-file -
